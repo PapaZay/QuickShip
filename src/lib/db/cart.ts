@@ -75,6 +75,20 @@ export async function CreateCart(): Promise<ShoppingCart> {
     }
 }
 
+export async function clearCart() {
+    const cart = await getCart();
+    if (!cart) return;
+
+    await prisma.cart.update({
+      where: { id: cart.id },
+      data: {
+        items: {
+          deleteMany: {}
+        }
+      }
+    });
+  }
+
 export async function mergeAnonymousCartIntoUserCart(userId: string){
     const localCartId = cookies().get("localCartId")?.value
     const cart = localCartId ?
