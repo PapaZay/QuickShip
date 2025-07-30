@@ -23,7 +23,7 @@ export default async function CartPage(){
                     Total: {formatPrice(cart?.subtotal || 0)}
                 </p>
                 <CheckoutButton />
-                <p className="text-red-500 mt-3">
+                <p className="text-red-500 mt-2">
                     Note: This is a demo - pressing the checkout button will take you to a Stripe Checkout session. It is in test mode, so no charges will be made.</p>
             </div>
         </div>
